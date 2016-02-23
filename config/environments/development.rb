@@ -30,7 +30,8 @@ Rails.application.configure do
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
-
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
@@ -47,7 +48,7 @@ Rails.application.configure do
           # put your host name here if needed
           #   see the reading below for more details
           # NOTE: This must be the correct region for YOU
-          :url => "s3-website-us-west-2.amazonaws.com",
+          :url => "s3-us-west-2.amazonaws.com",
           :bucket => Rails.application.secrets.BUCKET,
           # NOTE: these lines are changed to use secrets.yml
           # from the examples (which use ENV vars instead)
